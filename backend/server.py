@@ -339,7 +339,7 @@ DEFAULT_SETTINGS = {
     "instagram": "https://www.instagram.com/alfa.blindagem",
     "address": "Rua Augusto Becker, 1413 - São Ludgero - SC",
     "hours": "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h",
-    "prices": {"celular": 150, "tela": 150, "traseira": 150, "combo": 250, "relogio": 150, "tablet": 250, "oculos": 200},
+    "prices": {"celular": 180, "tela": 180, "traseira": 180, "combo": 320, "relogio": 150, "tablet": 250, "oculos": 200},
 }
 
 DEFAULT_SERVICES = [
@@ -347,7 +347,7 @@ DEFAULT_SERVICES = [
         "id": "srv-celular", "title": "CELULAR", "category": "celular", "order": 1, "active": True,
         "description": "Blindagem para iPhone e Android com acabamento invisível e toque original preservado.",
         "benefits": ["iPhone e Android", "Proteção contra riscos", "Blindagem das lentes da câmera", "Acabamento discreto"],
-        "price_label": "A partir de R$ 150",
+        "price_label": "A partir de R$ 180",
         "image": "https://images.unsplash.com/photo-1592832122594-c0c6bad718b1?q=80&w=1200&auto=format&fit=crop",
     },
     {
@@ -375,8 +375,8 @@ DEFAULT_SERVICES = [
 
 DEFAULT_PROMOTIONS = [
     {
-        "id": "promo-combo", "title": "COMBO ALFA", "subtitle": "Tela + traseira",
-        "price_label": "R$ 250", "tag": "MAIS VENDIDO", "active": True,
+        "id": "promo-combo", "title": "COMBO ALFA", "subtitle": "Tela + traseira de vidro",
+        "price_label": "R$ 320", "tag": "MAIS VENDIDO", "active": True,
     }
 ]
 

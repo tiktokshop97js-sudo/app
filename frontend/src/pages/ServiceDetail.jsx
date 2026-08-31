@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, WhatsappLogo, HouseLine, Calculator, ShieldCheck, Drop, HandSoap, Info } from "@phosphor-icons/react";
+import { ArrowLeft, Check, WhatsappLogo, HouseLine, Calculator, ShieldCheck, Drop, HandSoap, Info, Warning } from "@phosphor-icons/react";
 import { api, waLink } from "../lib/api";
 import { LogoWordmark } from "../components/Logo";
 import WhatsAppFloat from "../components/WhatsAppFloat";
@@ -37,6 +37,7 @@ const CONTENT = {
       "Opções: tela, traseira ou Combo Alfa",
       "Aplicação em até 30 minutos, também a domicílio",
     ],
+    warning: "A blindagem não pode ser aplicada em celulares com a tela trincada ou quebrada. Como o processo utiliza aplicação de produto líquido, ele pode entrar em contato com a placa e danificar o aparelho.",
     phonePrices: true,
   },
   tablet: {
@@ -309,6 +310,14 @@ export default function ServiceDetail() {
                       da sua casa, com processo de apenas 30 minutos.
                     </p>
                   </div>
+                  {extra.warning && (
+                    <div data-testid="service-detail-warning" className="mt-3 flex items-start gap-3 border border-red-500/30 bg-red-500/[0.07] px-4 py-3.5">
+                      <Warning size={18} weight="duotone" className="mt-0.5 shrink-0 text-red-400" />
+                      <p className="text-[12px] leading-snug tracking-[0.01em] text-red-200/90 sm:text-[13px]">
+                        <span className="font-semibold text-red-300">Atenção:</span> {extra.warning}
+                      </p>
+                    </div>
+                  )}
                 </section>
               )}
             </motion.div>
@@ -326,15 +335,15 @@ export default function ServiceDetail() {
                     <div className="mt-5 space-y-3.5" data-testid="service-detail-prices">
                       <div className="flex items-center justify-between border-b border-white/5 pb-3.5">
                         <span className="text-[13px] text-zinc-400">Proteção de Tela</span>
-                        <span className="font-display text-lg font-medium text-white">R$ {p.tela ?? 150}</span>
+                        <span className="font-display text-lg font-medium text-white">R$ {p.tela ?? 180}</span>
                       </div>
                       <div className="flex items-center justify-between border-b border-white/5 pb-3.5">
-                        <span className="text-[13px] text-zinc-400">Proteção Traseira</span>
-                        <span className="font-display text-lg font-medium text-white">R$ {p.traseira ?? 150}</span>
+                        <span className="text-[13px] text-zinc-400">Traseira de Vidro</span>
+                        <span className="font-display text-lg font-medium text-white">R$ {p.traseira ?? 180}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-[13px] font-semibold text-[#D4AF37]">Combo Alfa · tela + traseira</span>
-                        <span className="font-display gold-text text-xl font-medium">R$ {p.combo ?? 250}</span>
+                        <span className="font-display gold-text text-xl font-medium">R$ {p.combo ?? 320}</span>
                       </div>
                     </div>
                   ) : (

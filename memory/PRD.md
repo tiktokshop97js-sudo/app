@@ -30,6 +30,7 @@ Web app premium/luxo (preto + dourado) para empresa de blindagem de eletrônicos
 - Horários corrigidos: "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h" (DB + fallbacks + seed).
 - Atualização (páginas de detalhes): layout compacto (menos rolagem), letter-spacing sutil na descrição, seções em cards: Descrição (2 parágrafos profissionais por serviço, com selos Hidrofóbico/Anti-oleosidade), Como é feito (5 passos adaptados por serviço), Benefícios (8 cards com check por serviço), Informações importantes, card de preço + CTAs, e aviso legal ("não torna o aparelho indestrutível..."). Conteúdo completo fornecido pelo usuário para celular/tablet/relógio/óculos. Bug corrigido: botão Voltar caía em página em branco ao abrir link direto — agora usa navigate("/") quando não há histórico.
 - Atualização (óculos + câmera): imagem do serviço Óculos trocada para óculos de grau premium (photo-1591076482161-42ce6da69f67, com object-position custom no card/detalhe); galeria gal-7 atualizada. Celular agora inclui blindagem das lentes da câmera (descrição, benefício, info importante e benefícios do card na home — DB + seeds).
+- Atualização (preços + aviso): celular agora Tela R$180 / Traseira de Vidro R$180 / Combo Alfa R$320 (DB, seeds, fallbacks, calculadora, promoção). Aviso vermelho na página do celular: não aplicar em tela trincada/quebrada (líquido pode atingir a placa e danificar o aparelho).
 
 ## Verificado
 - API: login/me/leads/settings PUT/serviços/galeria/reviews/promos + 401 sem token e senha errada.

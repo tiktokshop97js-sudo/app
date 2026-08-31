@@ -47,7 +47,7 @@ const PriceCard = ({ title, subtitle, price, featured, message, whatsapp, testId
 );
 
 export default function Pricing({ settings, promotions }) {
-  const p = settings?.prices || { tela: 150, traseira: 150, combo: 250 };
+  const p = settings?.prices || { tela: 180, traseira: 180, combo: 320 };
   const wa = settings?.whatsapp;
 
   return (
@@ -78,7 +78,7 @@ export default function Pricing({ settings, promotions }) {
               message={`Olá! Vim pelo app Alfa Blindagem e quero o Combo Alfa (tela + traseira) por R$ ${p.combo}.`}
             />
             <PriceCard
-              title="Proteção Traseira"
+              title="Traseira de Vidro"
               price={p.traseira}
               delay={0.24}
               testId="price-card-traseira"

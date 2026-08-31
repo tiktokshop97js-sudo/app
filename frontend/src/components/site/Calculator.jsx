@@ -13,7 +13,7 @@ const PRODUCTS = [
 ];
 
 export default function Calculator({ settings }) {
-  const p = settings?.prices || { tela: 150, traseira: 150, combo: 250, relogio: 150, tablet: 250, oculos: 200 };
+  const p = settings?.prices || { tela: 180, traseira: 180, combo: 320, relogio: 150, tablet: 250, oculos: 200 };
   const wa = settings?.whatsapp;
   const [product, setProduct] = useState(null);
   const [protection, setProtection] = useState(null);
@@ -23,7 +23,7 @@ export default function Calculator({ settings }) {
     if (product.phone) {
       return [
         { id: "tela", label: "Tela", price: p.tela },
-        { id: "traseira", label: "Traseira", price: p.traseira },
+        { id: "traseira", label: "Traseira de vidro", price: p.traseira },
         { id: "combo", label: "Combo Alfa", price: p.combo },
       ];
     }
