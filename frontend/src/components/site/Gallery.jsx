@@ -63,6 +63,7 @@ export default function Gallery({ items }) {
                   src={item.url}
                   alt={item.title}
                   loading="lazy"
+                  style={{ objectPosition: item.category === "oculos" ? "center 78%" : "center" }}
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />

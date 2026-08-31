@@ -342,7 +342,7 @@ export default function ServiceDetail() {
                         <span className="font-display text-lg font-medium text-white">R$ {p.traseira ?? 180}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-[13px] font-semibold text-[#D4AF37]">Combo Alfa · tela + traseira</span>
+                        <span className="text-[13px] font-semibold text-[#D4AF37]">Combo Alfa · tela + traseira + câmeras</span>
                         <span className="font-display gold-text text-xl font-medium">R$ {p.combo ?? 320}</span>
                       </div>
                     </div>

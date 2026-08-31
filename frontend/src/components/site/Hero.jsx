@@ -136,7 +136,7 @@ export default function Hero({ settings }) {
             </div>
             <div className="glass-lux absolute -bottom-6 left-1/2 w-[85%] -translate-x-1/2 px-5 py-4">
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]">Combo Alfa</p>
-              <p className="mt-1 text-sm text-zinc-300">Tela + traseira · proteção completa</p>
+              <p className="mt-1 text-sm text-zinc-300">Tela + traseira + câmeras · proteção completa</p>
             </div>
           </div>
         </motion.div>

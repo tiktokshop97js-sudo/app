@@ -69,13 +69,13 @@ export default function Pricing({ settings, promotions }) {
             />
             <PriceCard
               title="Combo Alfa"
-              subtitle="Tela + Traseira"
+              subtitle="Tela + Traseira + Câmeras"
               price={p.combo}
               featured
               delay={0.12}
               testId="price-card-combo"
               whatsapp={wa}
-              message={`Olá! Vim pelo app Alfa Blindagem e quero o Combo Alfa (tela + traseira) por R$ ${p.combo}.`}
+              message={`Olá! Vim pelo app Alfa Blindagem e quero o Combo Alfa (tela + traseira + lentes das câmeras) por R$ ${p.combo}.`}
             />
             <PriceCard
               title="Traseira de Vidro"
@@ -107,16 +107,16 @@ export default function Pricing({ settings, promotions }) {
                 Combo <span className="gold-text">Alfa</span>
               </h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-zinc-400">
-                Tela + traseira. Proteção completa para o seu aparelho em uma única aplicação,
+                Tela + traseira + lentes das câmeras. Proteção completa para o seu aparelho em uma única aplicação,
                 com o acabamento premium que só a Alfa entrega.
               </p>
               <div className="mt-8 flex items-end gap-4">
                 <span className="font-display gold-text text-6xl font-medium sm:text-7xl">R$ {p.combo}</span>
-                <span className="pb-2 text-xs uppercase tracking-[0.2em] text-zinc-500">tela + traseira</span>
+                <span className="pb-2 text-xs uppercase tracking-[0.2em] text-zinc-500">tela + traseira + câmeras</span>
               </div>
               <a
                 data-testid="combo-cta"
-                href={waLink(wa, `Olá! Vim pelo app Alfa Blindagem e quero o Combo Alfa (tela + traseira) por R$ ${p.combo}.`)}
+                href={waLink(wa, `Olá! Vim pelo app Alfa Blindagem e quero o Combo Alfa (tela + traseira + lentes das câmeras) por R$ ${p.combo}.`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold mt-10 inline-block rounded-full px-10 py-4 text-[13px] font-extrabold tracking-[0.2em] text-[#050505]"
@@ -136,7 +136,7 @@ export default function Pricing({ settings, promotions }) {
                 </div>
               </div>
               <div className="glass-lux absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap px-6 py-3">
-                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]">Frente + Traseira</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]">Frente + Traseira + Câmeras</span>
               </div>
             </div>
           </Reveal>

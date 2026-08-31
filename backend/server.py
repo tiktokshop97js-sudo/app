@@ -375,7 +375,7 @@ DEFAULT_SERVICES = [
 
 DEFAULT_PROMOTIONS = [
     {
-        "id": "promo-combo", "title": "COMBO ALFA", "subtitle": "Tela + traseira de vidro",
+        "id": "promo-combo", "title": "COMBO ALFA", "subtitle": "Tela + traseira + lentes das câmeras",
         "price_label": "R$ 320", "tag": "MAIS VENDIDO", "active": True,
     }
 ]
@@ -389,12 +389,14 @@ DEFAULT_REVIEWS = [
 DEFAULT_GALLERY = [
     {"id": "gal-1", "category": "iphone", "title": "iPhone Protegido", "url": "https://images.unsplash.com/photo-1605236453806-6ff36851218e?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-2", "category": "iphone", "title": "Acabamento Premium", "url": "https://images.unsplash.com/photo-1556656793-08538906a9f8?q=80&w=1200&auto=format&fit=crop"},
-    {"id": "gal-3", "category": "android", "title": "Android Blindado", "url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop"},
+    {"id": "gal-3", "category": "android", "title": "Galaxy Blindado", "url": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-4", "category": "relogios", "title": "Relógio Premium", "url": "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-5", "category": "relogios", "title": "Smartwatch Protegido", "url": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-6", "category": "tablets", "title": "Tablet Protegido", "url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-7", "category": "oculos", "title": "Óculos de Grau Premium", "url": "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-8", "category": "aplicacoes", "title": "Aplicação Profissional", "url": "https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=1200&auto=format&fit=crop"},
+    {"id": "gal-9", "category": "iphone", "title": "iPhone 17 Pro Max", "url": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?q=80&w=1200&auto=format&fit=crop"},
+    {"id": "gal-10", "category": "android", "title": "Galaxy S26 Ultra", "url": "https://images.unsplash.com/photo-1678911820864-e2c567c655d7?q=80&w=1200&auto=format&fit=crop"},
 ]
 
 
