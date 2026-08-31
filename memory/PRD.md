@@ -28,6 +28,7 @@ Web app premium/luxo (preto + dourado) para empresa de blindagem de eletrônicos
 - Atualização: usuário adicionou diferencial "vamos até você no conforto da sua casa, processo de apenas 30 minutos" — incluído no hero, marquee, diferenciais, contato e footer.
 - Atualização (navegação): serviços viraram cards clicáveis em grade 2 colunas (mobile) / 4 (desktop). Cada card abre página de detalhes real em /servicos/:category (celular, relogio, tablet, oculos) com botão Voltar, imagem grande, descrição completa, informações importantes, benefícios, preços e CTA WhatsApp. Seção longa de dispositivos removida da home (conteúdo migrado para as páginas de detalhes).
 - Horários corrigidos: "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h" (DB + fallbacks + seed).
+- Atualização (páginas de detalhes): layout compacto (menos rolagem), letter-spacing sutil na descrição, seções em cards: Descrição (2 parágrafos profissionais por serviço, com selos Hidrofóbico/Anti-oleosidade), Como é feito (5 passos adaptados por serviço), Benefícios (8 cards com check por serviço), Informações importantes, card de preço + CTAs, e aviso legal ("não torna o aparelho indestrutível..."). Conteúdo completo fornecido pelo usuário para celular/tablet/relógio/óculos. Bug corrigido: botão Voltar caía em página em branco ao abrir link direto — agora usa navigate("/") quando não há histórico.
 
 ## Verificado
 - API: login/me/leads/settings PUT/serviços/galeria/reviews/promos + 401 sem token e senha errada.
