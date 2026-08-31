@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { WhatsappLogo, DeviceMobile, Watch, DeviceTablet, Sunglasses } from "@phosphor-icons/react";
+import { WhatsappLogo, DeviceMobile, Watch, DeviceTablet, Sunglasses, Warning, Camera } from "@phosphor-icons/react";
 import Reveal, { SectionHeading } from "./Reveal";
 import { waLink } from "../../lib/api";
 
@@ -13,7 +13,7 @@ const PRODUCTS = [
 ];
 
 export default function Calculator({ settings }) {
-  const p = settings?.prices || { tela: 180, traseira: 180, combo: 320, relogio: 150, tablet: 250, oculos: 200 };
+  const p = settings?.prices || { tela: 180, traseira: 180, combo: 320, camera: 80, relogio: 150, tablet: 250, oculos: 200 };
   const wa = settings?.whatsapp;
   const [product, setProduct] = useState(null);
   const [protection, setProtection] = useState(null);
@@ -25,6 +25,7 @@ export default function Calculator({ settings }) {
         { id: "tela", label: "Tela", price: p.tela },
         { id: "traseira", label: "Traseira de vidro", price: p.traseira },
         { id: "combo", label: "Combo Alfa", price: p.combo },
+        { id: "camera", label: "Lentes da câmera", price: p.camera },
       ];
     }
     const priceMap = { relogio: p.relogio, tablet: p.tablet, oculos: p.oculos };
@@ -88,7 +89,7 @@ export default function Calculator({ settings }) {
               <p className="mt-12 text-center text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-500">
                 2 · Escolha a proteção
               </p>
-              <div className={`mt-6 grid grid-cols-1 gap-3 ${product.phone ? "sm:grid-cols-3" : ""} sm:gap-4`}>
+              <div className={`mt-6 grid grid-cols-1 gap-3 ${product.phone ? "sm:grid-cols-4" : ""} sm:gap-4`}>
                 {options.map((opt) => {
                   const active = protection?.id === opt.id;
                   return (
@@ -110,6 +111,15 @@ export default function Calculator({ settings }) {
                   );
                 })}
               </div>
+              {product.phone && (
+                <div data-testid="calc-warning" className="mt-4 flex items-start gap-3 border border-red-500/30 bg-red-500/[0.07] px-4 py-3.5">
+                  <Warning size={18} weight="duotone" className="mt-0.5 shrink-0 text-red-400" />
+                  <p className="text-[12px] leading-snug tracking-[0.01em] text-red-200/90 sm:text-[13px]">
+                    <span className="font-semibold text-red-300">Atenção:</span> não aplicamos a blindagem em celulares
+                    com a tela trincada ou quebrada — o produto líquido pode atingir a placa e danificar o aparelho.
+                  </p>
+                </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>

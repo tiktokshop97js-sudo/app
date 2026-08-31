@@ -10,7 +10,7 @@ const CONTENT = {
   celular: {
     tagline: "iPhone e Android",
     description: [
-      "Proteção premium desenvolvida para preservar o celular contra riscos, arranhões, marcas e desgastes causados pelo uso diário. Ajuda a proteger a superfície contra pequenos impactos e quedas leves, mantendo o aparelho com aparência nova por mais tempo.",
+      "Proteção premium desenvolvida para preservar o celular contra riscos, arranhões, marcas e desgastes causados pelo uso diário. Ajuda a proteger a superfície contra pequenos impactos e quedas leves, mantendo o aparelho com aparência nova por mais tempo. Com a blindagem Alfa, a superfície fica até 50x mais resistente contra riscos e o desgaste do uso diário.",
       "A proteção também possui efeito hidrofóbico, ajudando a repelir água e líquidos da superfície. A oleosidade das mãos não é facilmente absorvida, facilitando a limpeza e reduzindo marcas de dedos. Também blindamos as lentes da câmera do celular, protegendo o conjunto fotográfico contra riscos e arranhões.",
     ],
     steps: [
@@ -340,6 +340,10 @@ export default function ServiceDetail() {
                       <div className="flex items-center justify-between border-b border-white/5 pb-3.5">
                         <span className="text-[13px] text-zinc-400">Traseira de Vidro</span>
                         <span className="font-display text-lg font-medium text-white">R$ {p.traseira ?? 180}</span>
+                      </div>
+                      <div className="flex items-center justify-between border-b border-white/5 pb-3.5">
+                        <span className="text-[13px] text-zinc-400">Lentes da Câmera (avulso)</span>
+                        <span className="font-display text-lg font-medium text-white">R$ {p.camera ?? 80}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-[13px] font-semibold text-[#D4AF37]">Combo Alfa · tela + traseira + câmeras</span>

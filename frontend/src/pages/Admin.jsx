@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import {
-  SignOut, Plus, Trash, PencilSimple, WhatsappLogo, ArrowLeft,
+  SignOut, Plus, Trash, PencilSimple, WhatsappLogo, ArrowLeft, ImageSquare,
 } from "@phosphor-icons/react";
 import { api, formatApiErrorDetail, waLink } from "../lib/api";
 import { LogoWordmark } from "../components/Logo";
@@ -86,6 +86,17 @@ function LeadsTab() {
     load();
   };
 
+  const setLeadStatus = async (id, status) => {
+    await api.put(`/admin/leads/${id}`, { status });
+    load();
+  };
+
+  const STATUS_STYLE = {
+    novo: "border-zinc-500/50 text-zinc-300 bg-zinc-500/10",
+    contatado: "border-amber-500/50 text-amber-300 bg-amber-500/10",
+    fechado: "border-emerald-500/50 text-emerald-300 bg-emerald-500/10",
+  };
+
   return (
     <div data-testid="admin-leads-tab">
       <h2 className="font-display text-xl font-medium uppercase text-white">Solicitações de orçamento</h2>
@@ -99,6 +110,22 @@ function LeadsTab() {
               <p className="mt-1 text-sm text-zinc-400">{l.product}{l.model ? ` · ${l.model}` : ""} · {l.service}</p>
               {l.message && <p className="mt-1 text-xs text-zinc-500">"{l.message}"</p>}
               <p className="mt-2 text-[10px] uppercase tracking-widest text-zinc-600">{new Date(l.created_at).toLocaleString("pt-BR")}</p>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                {["novo", "contatado", "fechado"].map((st) => (
+                  <button
+                    key={st}
+                    data-testid={`lead-status-${st}-${l.id}`}
+                    onClick={() => setLeadStatus(l.id, st)}
+                    className={`rounded-full border px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.15em] transition-colors ${
+                      (l.status || "novo") === st
+                        ? STATUS_STYLE[st]
+                        : "border-white/10 text-zinc-600 hover:text-zinc-300"
+                    }`}
+                  >
+                    {st}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="flex gap-2">
               <a data-testid={`lead-wa-${l.id}`} href={waLink(l.whatsapp.replace(/\D/g, ""), `Olá ${l.name}! Aqui é da Alfa Blindagem, sobre seu orçamento de ${l.product}.`)} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#25D366]/15 p-3 text-[#25D366] transition-colors hover:bg-[#25D366]/30" aria-label="Responder no WhatsApp">
@@ -120,6 +147,7 @@ const PRICE_FIELDS = [
   ["tela", "Proteção de Tela"],
   ["traseira", "Proteção Traseira"],
   ["combo", "Combo Alfa"],
+  ["camera", "Lentes da Câmera (avulso)"],
   ["relogio", "Relógio (a partir de)"],
   ["tablet", "Tablet (a partir de)"],
   ["oculos", "Óculos (a partir de)"],
@@ -303,6 +331,28 @@ const GALLERY_CATEGORIES = ["iphone", "android", "celulares", "relogios", "table
 function GalleryTab() {
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({ url: "", category: "iphone", title: "" });
+  const [uploading, setUploading] = useState(false);
+
+  const uploadFile = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("category", form.category);
+      fd.append("title", form.title || file.name.replace(/\.[^.]+$/, ""));
+      await api.post("/admin/gallery/upload", fd);
+      toast.success("Foto real adicionada à galeria");
+      setForm({ url: "", category: form.category, title: "" });
+      load();
+    } catch (err) {
+      toast.error(formatApiErrorDetail(err.response?.data?.detail));
+    } finally {
+      setUploading(false);
+      e.target.value = "";
+    }
+  };
   const load = useCallback(() => api.get("/gallery").then((r) => setItems(r.data)).catch(() => {}), []);
   useEffect(() => { load(); }, [load]);
 
@@ -325,6 +375,14 @@ function GalleryTab() {
         </select>
         <input data-testid="gallery-title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} placeholder="Título" className={inputCls} />
         <button data-testid="gallery-add" onClick={add} className="btn-gold flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[11px] font-extrabold tracking-[0.15em] text-[#050505]"><Plus size={15} weight="bold" /> ADICIONAR</button>
+      </div>
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <label data-testid="gallery-upload-label" className="flex cursor-pointer items-center justify-center gap-2 rounded-full border border-dashed border-[#D4AF37]/50 px-6 py-3.5 text-[11px] font-extrabold tracking-[0.15em] text-[#D4AF37] transition-colors hover:bg-[#D4AF37]/10">
+          <ImageSquare size={16} weight="bold" />
+          {uploading ? "ENVIANDO..." : "ENVIAR FOTO REAL DO TRABALHO"}
+          <input data-testid="gallery-upload-input" type="file" accept="image/*" className="hidden" onChange={uploadFile} disabled={uploading} />
+        </label>
+        <p className="text-xs text-zinc-600">A foto entra na galeria com a categoria e o título escolhidos acima.</p>
       </div>
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {items.map((item) => (

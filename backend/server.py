@@ -12,7 +12,8 @@ from typing import List, Optional
 
 import bcrypt
 import jwt
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Depends
+import requests
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Depends, UploadFile, File, Form, Response
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -77,6 +78,41 @@ def clean(doc: dict) -> dict:
 
 def new_id() -> str:
     return str(uuid.uuid4())
+
+
+STORAGE_BASE = (os.environ.get("INTEGRATION_PROXY_URL") or "").strip() or "https://integrations.emergentagent.com"
+STORAGE_URL = STORAGE_BASE.rstrip("/") + "/objstore/api/v1/storage"
+APP_NAME = "alfa-blindagem"
+storage_key = None
+
+
+def init_storage(force: bool = False):
+    global storage_key
+    if storage_key and not force:
+        return storage_key
+    resp = requests.post(f"{STORAGE_URL}/init", json={"emergent_key": os.environ.get("EMERGENT_LLM_KEY")}, timeout=30)
+    resp.raise_for_status()
+    storage_key = resp.json()["storage_key"]
+    return storage_key
+
+
+def put_object(path: str, data: bytes, content_type: str) -> dict:
+    key = init_storage()
+    resp = requests.put(
+        f"{STORAGE_URL}/objects/{path}",
+        headers={"X-Storage-Key": key, "Content-Type": content_type},
+        data=data,
+        timeout=120,
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+
+def get_object(path: str):
+    key = init_storage()
+    resp = requests.get(f"{STORAGE_URL}/objects/{path}", headers={"X-Storage-Key": key}, timeout=60)
+    resp.raise_for_status()
+    return resp.content, resp.headers.get("Content-Type", "application/octet-stream")
 
 
 # ---------- Schemas ----------
@@ -317,6 +353,58 @@ async def delete_gallery_item(gid: str, admin=Depends(get_current_admin)):
     return {"ok": True}
 
 
+class LeadStatusInput(BaseModel):
+    status: str
+
+
+@api_router.put("/admin/leads/{lead_id}")
+async def update_lead_status(lead_id: str, data: LeadStatusInput, admin=Depends(get_current_admin)):
+    if data.status not in {"novo", "contatado", "fechado"}:
+        raise HTTPException(status_code=400, detail="Status inválido")
+    await db.leads.update_one({"id": lead_id}, {"$set": {"status": data.status}})
+    return {"ok": True}
+
+
+@api_router.post("/admin/gallery/upload", status_code=201)
+async def upload_gallery_image(
+    file: UploadFile = File(...),
+    category: str = Form("aplicacoes"),
+    title: str = Form(""),
+    admin=Depends(get_current_admin),
+):
+    content_type = file.content_type or "application/octet-stream"
+    if not content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail="Envie apenas arquivos de imagem")
+    data = await file.read()
+    if len(data) > 8 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Imagem muito grande (máx. 8 MB)")
+    ext = (file.filename or "foto.jpg").rsplit(".", 1)[-1].lower()
+    if ext not in {"jpg", "jpeg", "png", "webp"}:
+        ext = "jpg"
+    path = f"{APP_NAME}/gallery/{new_id()}.{ext}"
+    result = put_object(path, data, content_type)
+    await db.files.insert_one({
+        "id": new_id(), "storage_path": result["path"], "original_filename": file.filename,
+        "content_type": content_type, "size": result["size"], "is_deleted": False,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    })
+    doc = {"id": new_id(), "url": f"/api/files/{result['path']}", "category": category, "title": title or "Foto do trabalho"}
+    await db.gallery.insert_one(doc)
+    return clean(doc)
+
+
+@api_router.get("/files/{path:path}")
+async def serve_file(path: str):
+    record = await db.files.find_one({"storage_path": path, "is_deleted": False})
+    if not record:
+        raise HTTPException(status_code=404, detail="Arquivo não encontrado")
+    try:
+        data, content_type = get_object(path)
+    except Exception:
+        raise HTTPException(status_code=404, detail="Arquivo não encontrado")
+    return Response(content=data, media_type=record.get("content_type", content_type))
+
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -339,7 +427,7 @@ DEFAULT_SETTINGS = {
     "instagram": "https://www.instagram.com/alfa.blindagem",
     "address": "Rua Augusto Becker, 1413 - São Ludgero - SC",
     "hours": "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h",
-    "prices": {"celular": 180, "tela": 180, "traseira": 180, "combo": 320, "relogio": 150, "tablet": 250, "oculos": 200},
+    "prices": {"celular": 180, "tela": 180, "traseira": 180, "combo": 320, "camera": 80, "relogio": 150, "tablet": 250, "oculos": 200},
 }
 
 DEFAULT_SERVICES = [
@@ -427,6 +515,11 @@ async def seed():
         await db.reviews.insert_many(DEFAULT_REVIEWS)
     if await db.gallery.count_documents({}) == 0:
         await db.gallery.insert_many(DEFAULT_GALLERY)
+    try:
+        init_storage()
+        logger.info("Storage inicializado")
+    except Exception as e:
+        logger.error(f"Storage init falhou: {e}")
     logger.info("Seed concluído")
 
 

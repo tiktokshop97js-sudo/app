@@ -109,6 +109,19 @@ export default function Hero({ settings }) {
               </li>
             ))}
           </motion.ul>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.35, duration: 0.8, ease }}
+            data-testid="hero-stat-50x"
+            className="mt-8 flex max-w-lg items-center gap-5 border border-[#D4AF37]/25 bg-[#D4AF37]/[0.05] px-6 py-4"
+          >
+            <span className="font-display gold-text text-4xl font-medium leading-none">50x</span>
+            <span className="text-[11px] font-semibold uppercase leading-snug tracking-[0.14em] text-zinc-400">
+              Mais resistência contra riscos e o desgaste do dia a dia
+            </span>
+          </motion.div>
         </div>
 
         <motion.div
