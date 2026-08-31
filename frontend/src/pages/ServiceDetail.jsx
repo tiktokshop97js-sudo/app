@@ -11,7 +11,7 @@ const CONTENT = {
     tagline: "iPhone e Android",
     description: [
       "Proteção premium desenvolvida para preservar o celular contra riscos, arranhões, marcas e desgastes causados pelo uso diário. Ajuda a proteger a superfície contra pequenos impactos e quedas leves, mantendo o aparelho com aparência nova por mais tempo.",
-      "A proteção também possui efeito hidrofóbico, ajudando a repelir água e líquidos da superfície. A oleosidade das mãos não é facilmente absorvida, facilitando a limpeza e reduzindo marcas de dedos.",
+      "A proteção também possui efeito hidrofóbico, ajudando a repelir água e líquidos da superfície. A oleosidade das mãos não é facilmente absorvida, facilitando a limpeza e reduzindo marcas de dedos. Também blindamos as lentes da câmera do celular, protegendo o conjunto fotográfico contra riscos e arranhões.",
     ],
     steps: [
       "Avaliação do aparelho e verificação do estado da tela e da traseira.",
@@ -28,10 +28,12 @@ const CONTENT = {
       "Redução de marcas de oleosidade",
       "Facilita a limpeza da tela",
       "Mantém o toque e a sensibilidade",
+      "Blindagem das lentes da câmera",
       "Acabamento transparente e discreto",
     ],
     important: [
       "Compatível com iPhone e Android, todas as gerações",
+      "Também blindamos as lentes da câmera do celular",
       "Opções: tela, traseira ou Combo Alfa",
       "Aplicação em até 30 minutos, também a domicílio",
     ],
@@ -215,6 +217,7 @@ export default function ServiceDetail() {
                 src={service.image}
                 alt={service.title}
                 data-testid="service-detail-image"
+                style={{ objectPosition: category === "oculos" ? "center 72%" : "center" }}
                 className="h-52 w-full object-cover sm:h-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent" />

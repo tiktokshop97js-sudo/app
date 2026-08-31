@@ -346,7 +346,7 @@ DEFAULT_SERVICES = [
     {
         "id": "srv-celular", "title": "CELULAR", "category": "celular", "order": 1, "active": True,
         "description": "Blindagem para iPhone e Android com acabamento invisível e toque original preservado.",
-        "benefits": ["iPhone e Android", "Proteção contra riscos", "Acabamento discreto"],
+        "benefits": ["iPhone e Android", "Proteção contra riscos", "Blindagem das lentes da câmera", "Acabamento discreto"],
         "price_label": "A partir de R$ 150",
         "image": "https://images.unsplash.com/photo-1592832122594-c0c6bad718b1?q=80&w=1200&auto=format&fit=crop",
     },
@@ -369,7 +369,7 @@ DEFAULT_SERVICES = [
         "description": "Proteção para lentes e armações de óculos de grau e solares premium.",
         "benefits": ["Lentes e armações", "Proteção contra micro-riscos", "Visual intacto"],
         "price_label": "A partir de R$ 200",
-        "image": "https://images.unsplash.com/photo-1722842529941-825976fc14f1?q=80&w=1200&auto=format&fit=crop",
+        "image": "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=1200&auto=format&fit=crop",
     },
 ]
 
@@ -393,7 +393,7 @@ DEFAULT_GALLERY = [
     {"id": "gal-4", "category": "relogios", "title": "Relógio Premium", "url": "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-5", "category": "relogios", "title": "Smartwatch Protegido", "url": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-6", "category": "tablets", "title": "Tablet Protegido", "url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1200&auto=format&fit=crop"},
-    {"id": "gal-7", "category": "oculos", "title": "Óculos Premium", "url": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1200&auto=format&fit=crop"},
+    {"id": "gal-7", "category": "oculos", "title": "Óculos de Grau Premium", "url": "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=1200&auto=format&fit=crop"},
     {"id": "gal-8", "category": "aplicacoes", "title": "Aplicação Profissional", "url": "https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=1200&auto=format&fit=crop"},
 ]
 

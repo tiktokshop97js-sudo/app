@@ -25,6 +25,7 @@ const ServiceCard = ({ service, index }) => {
               src={service.image}
               alt={service.title}
               loading="lazy"
+              style={{ objectPosition: service.category === "oculos" ? "center 78%" : "center" }}
               className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
           ) : (
