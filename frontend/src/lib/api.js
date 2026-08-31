@@ -16,7 +16,7 @@ export const waLink = (number, message) =>
   `https://wa.me/${number || FALLBACK_WHATSAPP}?text=${encodeURIComponent(message)}`;
 
 export const DEFAULT_WA_MESSAGE =
-  "Olá! Vim pelo aplicativo Alfa Blindagem e gostaria de solicitar um orçamento.";
+  "Olá! Vim pelo aplicativo Alfa Blindagem Premium e gostaria de solicitar um orçamento.";
 
 export const formatApiErrorDetail = (detail) => {
   if (detail == null) return "Algo deu errado. Tente novamente.";

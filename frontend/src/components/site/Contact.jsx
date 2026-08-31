@@ -25,7 +25,7 @@ export default function Contact({ settings }) {
     try {
       await api.post("/leads", form);
       toast.success("Solicitação registrada! Abrindo o WhatsApp para confirmar.");
-      const msg = `Olá! Sou ${form.name}. Vim pelo app Alfa Blindagem e gostaria de um orçamento: ${form.product}${form.model ? ` ${form.model}` : ""} — ${form.service}.${form.message ? ` Obs: ${form.message}` : ""}`;
+      const msg = `Olá! Sou ${form.name}. Vim pelo app Alfa Blindagem Premium e gostaria de um orçamento: ${form.product}${form.model ? ` ${form.model}` : ""} — ${form.service}.${form.message ? ` Obs: ${form.message}` : ""}`;
       window.open(waLink(wa, msg), "_blank", "noopener");
       setForm({ name: "", whatsapp: "", product: "iPhone", model: "", service: "Combo Alfa", message: "" });
     } catch (err) {
@@ -51,6 +51,7 @@ export default function Contact({ settings }) {
                   <div>
                     <p className="text-sm font-semibold text-white">{address}</p>
                     <p className="mt-1 text-xs text-zinc-500">Atendimento presencial com agendamento</p>
+                    <p className="mt-1 text-xs font-semibold text-[#D4AF37]/80">Atendemos também Orleans e Braço do Norte</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -83,7 +84,7 @@ export default function Contact({ settings }) {
                 </a>
                 <a
                   data-testid="contact-whatsapp-button"
-                  href={waLink(wa, "Olá! Vim pelo app Alfa Blindagem e gostaria de solicitar um orçamento.")}
+                  href={waLink(wa, "Olá! Vim pelo app Alfa Blindagem Premium e gostaria de solicitar um orçamento.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] py-4 text-[12px] font-extrabold tracking-[0.2em] text-[#050505] transition-transform duration-200 hover:scale-[1.02] active:scale-95"

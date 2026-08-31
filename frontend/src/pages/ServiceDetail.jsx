@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, WhatsappLogo, HouseLine, Calculator, ShieldCheck, Drop, HandSoap, Info, Warning } from "@phosphor-icons/react";
+import { ArrowLeft, Check, WhatsappLogo, HouseLine, Calculator, ShieldCheck, Drop, HandSoap, Info, Warning, CalendarBlank } from "@phosphor-icons/react";
 import { api, waLink } from "../lib/api";
 import { LogoWordmark } from "../components/Logo";
 import WhatsAppFloat from "../components/WhatsAppFloat";
@@ -147,6 +147,8 @@ export default function ServiceDetail() {
   const [service, setService] = useState(null);
   const [settings, setSettings] = useState(null);
   const [notFound, setNotFound] = useState(false);
+  const [date, setDate] = useState("");
+  const [shift, setShift] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -163,6 +165,12 @@ export default function ServiceDetail() {
   const extra = CONTENT[category] || {};
   const wa = settings?.whatsapp;
   const p = settings?.prices || {};
+  const schedule = date
+    ? ` Prefiro agendar para ${new Date(`${date}T12:00:00`).toLocaleDateString("pt-BR")}${shift ? `, turno da ${shift}` : ""}.`
+    : "";
+  const waMessage = service
+    ? `Olá! Vim pelo app Alfa Blindagem Premium e gostaria de um orçamento para blindar: ${service.title}.${schedule}`
+    : "";
 
   return (
     <div className="min-h-screen bg-[#050505] text-white" data-testid="service-detail-page">
@@ -356,9 +364,39 @@ export default function ServiceDetail() {
                     </p>
                   )}
 
+                  <div className="mt-7 border border-white/10 bg-[#0a0a0a] p-4" data-testid="schedule-block">
+                    <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
+                      <CalendarBlank size={14} weight="duotone" className="text-[#D4AF37]" /> Agendar aplicação (opcional)
+                    </p>
+                    <input
+                      data-testid="schedule-date"
+                      type="date"
+                      value={date}
+                      min={new Date().toISOString().split("T")[0]}
+                      onChange={(e) => setDate(e.target.value)}
+                      className="mt-3 w-full border border-white/10 bg-[#0d0d0d] px-4 py-2.5 text-sm text-white outline-none [color-scheme:dark] focus:border-[#D4AF37]/60"
+                    />
+                    <div className="mt-2.5 grid grid-cols-2 gap-2">
+                      {[["manhã", "Manhã · 08h às 11h"], ["tarde", "Tarde · 14h às 19h"]].map(([id, label]) => (
+                        <button
+                          key={id}
+                          type="button"
+                          data-testid={`schedule-shift-${id === "manhã" ? "manha" : "tarde"}`}
+                          onClick={() => setShift(shift === id ? "" : id)}
+                          className={`border px-3 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] transition-colors ${
+                            shift === id
+                              ? "border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]"
+                              : "border-white/10 text-zinc-500 hover:border-[#D4AF37]/40 hover:text-white"
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                   <a
                     data-testid="service-detail-whatsapp"
-                    href={waLink(wa, `Olá! Vim pelo app Alfa Blindagem e gostaria de um orçamento para blindar: ${service.title}.`)}
+                    href={waLink(wa, waMessage)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-7 flex items-center justify-center gap-3 rounded-full bg-[#25D366] py-3.5 text-[12px] font-extrabold tracking-[0.18em] text-[#050505] transition-transform duration-200 hover:scale-[1.02] active:scale-95"
@@ -373,7 +411,7 @@ export default function ServiceDetail() {
                     <Calculator size={16} weight="bold" /> MONTAR MINHA PROTEÇÃO
                   </Link>
                   <p className="mt-4 text-center text-[11px] leading-relaxed text-zinc-600">
-                    Atendimento em São Ludgero - SC e região · a domicílio em 30 minutos
+                    São Ludgero · Orleans · Braço do Norte · a domicílio em 30 minutos
                   </p>
                 </div>
 

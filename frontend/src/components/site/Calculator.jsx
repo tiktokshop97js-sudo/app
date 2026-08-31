@@ -39,9 +39,9 @@ export default function Calculator({ settings }) {
 
   const message = product
     ? protection
-      ? `Olá! Vim pelo app Alfa Blindagem e gostaria de blindar meu ${product.label}. Opção escolhida: ${protection.label}${protection.from ? ` (a partir de R$ ${protection.price})` : ` — R$ ${protection.price}`}.`
-      : `Olá! Vim pelo app Alfa Blindagem e gostaria de blindar meu ${product.label}.`
-    : "Olá! Vim pelo app Alfa Blindagem e gostaria de solicitar um orçamento.";
+      ? `Olá! Vim pelo app Alfa Blindagem Premium e gostaria de blindar meu ${product.label}. Opção escolhida: ${protection.label}${protection.from ? ` (a partir de R$ ${protection.price})` : ` — R$ ${protection.price}`}.`
+      : `Olá! Vim pelo app Alfa Blindagem Premium e gostaria de blindar meu ${product.label}.`
+    : "Olá! Vim pelo app Alfa Blindagem Premium e gostaria de solicitar um orçamento.";
 
   return (
     <section id="calculadora" data-testid="calculator-section" className="relative px-5 py-24 sm:px-8 sm:py-32">

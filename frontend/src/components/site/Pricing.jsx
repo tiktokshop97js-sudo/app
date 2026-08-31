@@ -65,7 +65,7 @@ export default function Pricing({ settings, promotions }) {
               delay={0}
               testId="price-card-tela"
               whatsapp={wa}
-              message={`Olá! Vim pelo app Alfa Blindagem e tenho interesse na Proteção de Tela (a partir de R$ ${p.tela}).`}
+              message={`Olá! Vim pelo app Alfa Blindagem Premium e tenho interesse na Proteção de Tela (a partir de R$ ${p.tela}).`}
             />
             <PriceCard
               title="Combo Alfa"
@@ -75,7 +75,7 @@ export default function Pricing({ settings, promotions }) {
               delay={0.12}
               testId="price-card-combo"
               whatsapp={wa}
-              message={`Olá! Vim pelo app Alfa Blindagem e quero o Combo Alfa (tela + traseira + lentes das câmeras) por R$ ${p.combo}.`}
+              message={`Olá! Vim pelo app Alfa Blindagem Premium e quero o Combo Alfa (tela + traseira + lentes das câmeras) por R$ ${p.combo}.`}
             />
             <PriceCard
               title="Traseira de Vidro"
@@ -83,7 +83,7 @@ export default function Pricing({ settings, promotions }) {
               delay={0.24}
               testId="price-card-traseira"
               whatsapp={wa}
-              message={`Olá! Vim pelo app Alfa Blindagem e tenho interesse na Proteção Traseira (R$ ${p.traseira}).`}
+              message={`Olá! Vim pelo app Alfa Blindagem Premium e tenho interesse na Traseira de Vidro (R$ ${p.traseira}).`}
             />
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function Pricing({ settings, promotions }) {
               </div>
               <a
                 data-testid="combo-cta"
-                href={waLink(wa, `Olá! Vim pelo app Alfa Blindagem e quero o Combo Alfa (tela + traseira + lentes das câmeras) por R$ ${p.combo}.`)}
+                href={waLink(wa, `Olá! Vim pelo app Alfa Blindagem Premium e quero o Combo Alfa (tela + traseira + lentes das câmeras) por R$ ${p.combo}.`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold mt-10 inline-block rounded-full px-10 py-4 text-[13px] font-extrabold tracking-[0.2em] text-[#050505]"

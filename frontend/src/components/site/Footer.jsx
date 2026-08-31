@@ -75,6 +75,7 @@ export default function Footer({ settings }) {
             <li className="leading-relaxed">{address}</li>
             <li className="text-zinc-500">{settings?.hours || "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h"}</li>
             <li className="text-[#D4AF37]/80">Atendemos a domicílio · 30 min</li>
+            <li className="text-zinc-500">São Ludgero · Orleans · Braço do Norte</li>
           </ul>
         </div>
 
