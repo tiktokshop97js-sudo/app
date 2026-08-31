@@ -4,5 +4,13 @@
       "root": "backend/",
       "entrypoint": "server:app"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    }
+  ]
 }
