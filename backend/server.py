@@ -338,7 +338,7 @@ DEFAULT_SETTINGS = {
     "whatsapp_display": "(98) 98478-4793",
     "instagram": "https://www.instagram.com/alfa.blindagem",
     "address": "Rua Augusto Becker, 1413 - São Ludgero - SC",
-    "hours": "Seg a Sex: 9h às 18h | Sáb: 9h às 13h",
+    "hours": "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h",
     "prices": {"celular": 150, "tela": 150, "traseira": 150, "combo": 250, "relogio": 150, "tablet": 250, "oculos": 200},
 }
 

@@ -26,6 +26,8 @@ Web app premium/luxo (preto + dourado) para empresa de blindagem de eletrônicos
 - Painel /admin: login JWT, abas Orçamentos (leads), Configurações (slogan, whatsapp, instagram, endereço, horários, 7 preços), Serviços CRUD + ativar/desativar, Promoções CRUD, Galeria (add/remover), Avaliações CRUD.
 - SEO meta tags pt-BR, PWA manifest, ícone SVG dourado.
 - Atualização: usuário adicionou diferencial "vamos até você no conforto da sua casa, processo de apenas 30 minutos" — incluído no hero, marquee, diferenciais, contato e footer.
+- Atualização (navegação): serviços viraram cards clicáveis em grade 2 colunas (mobile) / 4 (desktop). Cada card abre página de detalhes real em /servicos/:category (celular, relogio, tablet, oculos) com botão Voltar, imagem grande, descrição completa, informações importantes, benefícios, preços e CTA WhatsApp. Seção longa de dispositivos removida da home (conteúdo migrado para as páginas de detalhes).
+- Horários corrigidos: "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h" (DB + fallbacks + seed).
 
 ## Verificado
 - API: login/me/leads/settings PUT/serviços/galeria/reviews/promos + 401 sem token e senha errada.

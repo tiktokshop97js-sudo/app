@@ -1,122 +1,81 @@
-import { motion } from "framer-motion";
-import { Check, ArrowUpRight } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
+import { ArrowRight, DeviceMobile, Watch, DeviceTablet, Sunglasses } from "@phosphor-icons/react";
 import Reveal, { SectionHeading } from "./Reveal";
-import { IMG, scrollToId } from "../../lib/media";
 
-const ServiceCard = ({ service, index }) => (
-  <Reveal delay={index * 0.12}>
-    <article
-      data-testid={`service-card-${service.category}`}
-      className="card-lux group relative flex h-full flex-col overflow-hidden"
-    >
-      <div className="relative h-56 overflow-hidden sm:h-64">
-        <img
-          src={service.image}
-          alt={service.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0b] via-[#0b0b0b]/30 to-transparent" />
-        <span className="font-display absolute left-5 top-5 text-5xl font-medium text-white/10">
-          0{index + 1}
-        </span>
-      </div>
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <h3 className="font-display text-xl font-medium uppercase tracking-wide text-white">
-          {service.title}
-        </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">{service.description}</p>
-        <ul className="mt-5 space-y-2.5">
-          {service.benefits.map((b) => (
-            <li key={b} className="flex items-center gap-2.5 text-[13px] text-zinc-300">
-              <Check size={15} weight="bold" className="shrink-0 text-[#D4AF37]" />
-              {b}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-5">
-          <span className="text-sm font-bold text-[#D4AF37]">{service.price_label}</span>
-          <button
-            data-testid={`service-details-${service.category}`}
-            onClick={() => scrollToId("calculadora")}
-            className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-zinc-400 transition-colors duration-300 hover:text-[#D4AF37]"
-          >
-            Ver detalhes
-            <ArrowUpRight size={15} weight="bold" />
-          </button>
+const ICONS = {
+  celular: DeviceMobile,
+  relogio: Watch,
+  tablet: DeviceTablet,
+  oculos: Sunglasses,
+};
+
+const ServiceCard = ({ service, index }) => {
+  const Icon = ICONS[service.category] || DeviceMobile;
+  return (
+    <Reveal delay={index * 0.08} className="h-full">
+      <Link
+        to={`/servicos/${service.category}`}
+        data-testid={`service-card-${service.category}`}
+        aria-label={`Ver detalhes de ${service.title}`}
+        className="card-lux group flex h-full flex-col overflow-hidden"
+      >
+        <div className="relative h-32 overflow-hidden sm:h-48">
+          {service.image ? (
+            <img
+              src={service.image}
+              alt={service.title}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center bg-[#0d0d0d]">
+              <Icon size={44} weight="duotone" className="text-[#D4AF37]" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0b] via-[#0b0b0b]/40 to-transparent" />
+          <div className="glass-lux absolute left-3 top-3 rounded-full p-2 sm:left-4 sm:top-4">
+            <Icon size={18} weight="duotone" className="text-[#D4AF37]" />
+          </div>
+          <span className="font-display absolute bottom-2 right-3 text-3xl font-medium text-white/10 sm:text-4xl">
+            0{index + 1}
+          </span>
         </div>
-      </div>
-    </article>
-  </Reveal>
-);
+        <div className="flex flex-1 flex-col p-4 sm:p-6">
+          <h3 className="font-display text-base font-medium uppercase tracking-wide text-white sm:text-xl">
+            {service.title}
+          </h3>
+          <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-zinc-500 sm:text-sm sm:text-zinc-400">
+            {service.description}
+          </p>
+          <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-3 sm:pt-4">
+            <span className="text-[11px] font-bold text-[#D4AF37] sm:text-sm">{service.price_label}</span>
+            <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-400 transition-colors duration-300 group-hover:text-[#D4AF37] sm:text-[11px]">
+              <span className="hidden sm:inline">Ver detalhes</span>
+              <ArrowRight size={14} weight="bold" className="transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </div>
+        </div>
+      </Link>
+    </Reveal>
+  );
+};
 
 export default function Services({ services }) {
   return (
     <section id="servicos" data-testid="services-section" className="relative px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeading index="01" kicker="Serviços" title="Escolha o que você quer proteger" />
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
+        <Reveal delay={0.1}>
+          <p className="mt-6 max-w-lg text-sm leading-relaxed text-zinc-500 sm:text-base">
+            Toque em um serviço para ver todos os detalhes, benefícios e valores.
+          </p>
+        </Reveal>
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-7">
           {services.map((s, i) => (
             <ServiceCard key={s.id} service={s} index={i} />
           ))}
-        </div>
-
-        <div className="mt-32 grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-          <Reveal className="lg:col-span-5">
-            <div className="relative">
-              <div className="absolute -right-3 -top-3 h-16 w-16 border-r-2 border-t-2 border-[#D4AF37]" />
-              <img
-                src={IMG.iphoneDark}
-                alt="Smartphone premium recebendo blindagem Alfa"
-                loading="lazy"
-                className="h-[420px] w-full border border-white/10 object-cover"
-                data-testid="smartphone-section-image"
-              />
-              <div className="glass-lux absolute -bottom-5 left-5 flex gap-6 px-6 py-4">
-                <div>
-                  <p className="font-display text-lg font-medium text-white">iPhone</p>
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Todas as gerações</p>
-                </div>
-                <div className="w-px bg-white/10" />
-                <div>
-                  <p className="font-display text-lg font-medium text-white">Android</p>
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Todas as marcas</p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-          <div className="lg:col-span-7 lg:pl-10">
-            <SectionHeading index="02" kicker="Smartphones" title="Blindagem para smartphones" />
-            <Reveal delay={0.15}>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400">
-                Trabalhamos com <span className="text-white">iPhone</span> e{" "}
-                <span className="text-white">Android</span>. A película de blindagem é aplicada
-                com precisão milimétrica, reforçando a superfície sem alterar o design original
-                do seu aparelho.
-              </p>
-            </Reveal>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {[
-                "Proteção contra riscos do dia a dia",
-                "Maior resistência da superfície",
-                "Acabamento discreto e invisível",
-                "Preserva o visual do aparelho",
-                "Aplicação profissional",
-                "Toque e sensibilidade originais",
-              ].map((b, i) => (
-                <Reveal key={b} delay={0.2 + i * 0.07}>
-                  <div className="glass-lux flex items-center gap-3 px-5 py-4">
-                    <Check size={17} weight="bold" className="shrink-0 text-[#D4AF37]" />
-                    <span className="text-sm text-zinc-300">{b}</span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
 }
-
-export const ServicesMotion = motion;

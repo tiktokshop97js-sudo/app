@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import Site from "@/pages/Site";
 import Admin from "@/pages/Admin";
+import ServiceDetail from "@/pages/ServiceDetail";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Site />} />
+          <Route path="/servicos/:category" element={<ServiceDetail />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import { api } from "../lib/api";
+import { scrollToId } from "../lib/media";
 import Splash from "../components/site/Splash";
 import Navbar from "../components/site/Navbar";
 import Hero from "../components/site/Hero";
 import Marquee from "../components/site/Marquee";
 import Services from "../components/site/Services";
 import Pricing from "../components/site/Pricing";
-import Devices from "../components/site/Devices";
 import Calculator from "../components/site/Calculator";
 import Gallery from "../components/site/Gallery";
 import BeforeAfter from "../components/site/BeforeAfter";
@@ -24,6 +24,13 @@ export default function Site() {
   const [promotions, setPromotions] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [gallery, setGallery] = useState([]);
+
+  useEffect(() => {
+    if (splashDone && window.location.hash) {
+      const id = window.location.hash.slice(1);
+      setTimeout(() => scrollToId(id), 400);
+    }
+  }, [splashDone]);
 
   useEffect(() => {
     const timer = setTimeout(() => setSplashDone(true), 2600);
@@ -71,7 +78,6 @@ export default function Site() {
             <Marquee />
             <Services services={services} />
             <Pricing settings={settings} promotions={promotions} />
-            <Devices settings={settings} />
             <Calculator settings={settings} />
             <Gallery items={gallery} />
             <BeforeAfter />

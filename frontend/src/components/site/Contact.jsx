@@ -15,7 +15,7 @@ export default function Contact({ settings }) {
   const [sending, setSending] = useState(false);
   const wa = settings?.whatsapp;
   const address = settings?.address || "Rua Augusto Becker, 1413 - São Ludgero - SC";
-  const hours = settings?.hours || "Seg a Sex: 9h às 18h | Sáb: 9h às 13h";
+  const hours = settings?.hours || "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h";
 
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 

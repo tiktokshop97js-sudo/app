@@ -73,7 +73,7 @@ export default function Footer({ settings }) {
           <ul className="mt-6 space-y-3.5 text-sm text-zinc-400">
             <li>WhatsApp: {settings?.whatsapp_display || "(98) 98478-4793"}</li>
             <li className="leading-relaxed">{address}</li>
-            <li className="text-zinc-500">{settings?.hours || "Seg a Sex: 9h às 18h | Sáb: 9h às 13h"}</li>
+            <li className="text-zinc-500">{settings?.hours || "Seg a Sáb: 08h às 11h | Sáb e Dom: 14h às 19h"}</li>
             <li className="text-[#D4AF37]/80">Atendemos a domicílio · 30 min</li>
           </ul>
         </div>
