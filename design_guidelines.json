@@ -1,0 +1,124 @@
+{
+  "theme": "dark",
+  "project_context": {
+    "name": "ALFA BLINDAGEM",
+    "description": "Premium/luxury mobile-first website for an electronics armoring/protection company with an administrative panel.",
+    "aesthetic": "Deep black, graphite, white, metallic gold, silver. Inspired by tech and premium car brands. Glassmorphism, soft shadows, micro-interactions.",
+    "slogan": "Proteção que você sente. Qualidade que você vê."
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Clash Display",
+      "body": "Manrope",
+      "mono": "JetBrains Mono"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter uppercase font-medium",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-medium",
+      "h3": "text-xl sm:text-2xl tracking-tight",
+      "h4": "text-lg sm:text-xl",
+      "body": "text-base leading-relaxed text-zinc-400",
+      "label": "text-xs tracking-[0.2em] uppercase text-zinc-500 font-bold"
+    },
+    "instructions_to_main_agent": "Use Clash Display for all headings to give an award-worthy premium automotive/tech feel. Do not use generic sans like Inter. Manrope is strictly for body copy for crisp legibility."
+  },
+  "colors": {
+    "background": "#050505",
+    "surface": "#121212",
+    "surface_glass": "rgba(18, 18, 18, 0.7)",
+    "border": "#262626",
+    "primary": "#D4AF37",
+    "primary_hover": "#F0C84B",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#A1A1AA",
+    "success": "#22C55E",
+    "error": "#EF4444"
+  },
+  "visual_enhancers": {
+    "glassmorphism": "backdrop-blur-xl bg-[#121212]/70 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]",
+    "neumorphism_tactile": "bg-[#121212] shadow-[4px_4px_10px_#000000,-4px_-4px_10px_#1a1a1a] border border-white/5",
+    "gold_gradient": "bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] bg-clip-text text-transparent",
+    "hover_state": "transition-transform duration-300 ease-out hover:-translate-y-1 hover:border-[#D4AF37]/50",
+    "textures": "Use subtle noise/grain overlay on dark backgrounds to remove digital flatness."
+  },
+  "layouts": {
+    "spacing": "p-4 sm:p-8 lg:p-16",
+    "marketing_grid": "grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10",
+    "dashboard_grid": "grid grid-cols-1 md:grid-cols-4 gap-4",
+    "hero_overlay": "bg-gradient-to-b from-black/80 via-black/40 to-[#050505]"
+  },
+  "motion": {
+    "libraries": ["framer-motion", "lenis"],
+    "hero_reveal": "Masked line-by-line reveal on load for the H1 using Framer Motion. Delay subtitle and CTA.",
+    "scroll_animations": "Elements fade and translate up slightly on scroll.",
+    "micro_interactions": "Buttons have subtle scale-down on tap. Cards have gold border glow on hover.",
+    "splash_screen": "Cinematic loader with stylized shield + A logo animating on screen before revealing home."
+  },
+  "media": {
+    "image_urls": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1645290099737-23f17b0b7dd8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMGdvbGQlMjBtZXRhbGxpYyUyMHRleHR1cmV8ZW58MHx8fHwxNzg4MTQ0NjUyfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract black and gold texture for splash/hero moments",
+        "category": "hero"
+      },
+      "service_iphone": {
+        "url": "https://images.unsplash.com/photo-1592832122594-c0c6bad718b1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxpcGhvbmUlMjBkYXJrJTIwYWVzdGhldGljfGVufDB8fHx8MTc4ODE0NDY0Nnww&ixlib=rb-4.1.0&q=85",
+        "description": "Silver iPhone on dark aesthetic background",
+        "category": "services"
+      },
+      "service_watch": {
+        "url": "https://images.unsplash.com/photo-1616353329366-b5546ca70b1a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwzfHxhcHBsZSUyMHdhdGNoJTIwbHV4dXJ5JTIwZGFya3xlbnwwfHx8fDE3ODgxNDQ2NDZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Premium Apple Watch on dark background",
+        "category": "services"
+      },
+      "service_tablet": {
+        "url": "https://images.unsplash.com/photo-1632151023539-a7b0766d4178?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxpcGFkJTIwZGFyayUyMGFlc3RoZXRpY3xlbnwwfHx8fDE3ODgxNDQ2NTJ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "iPad illuminated in dark environment",
+        "category": "services"
+      },
+      "service_glasses": {
+        "url": "https://images.unsplash.com/photo-1722842529941-825976fc14f1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxzdW5nbGFzc2VzJTIwbHV4dXJ5JTIwZGFya3xlbnwwfHx8fDE3ODgxNDQ2NDZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Luxury dark sunglasses",
+        "category": "services"
+      },
+      "before_after_broken": {
+        "url": "https://images.unsplash.com/photo-1733590634512-66186b83ad07?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxicm9rZW4lMjBwaG9uZSUyMHNjcmVlbnxlbnwwfHx8fDE3ODgxNDQ2NDZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Cracked screen",
+        "category": "gallery"
+      },
+      "texture_carbon": {
+        "url": "https://images.pexels.com/photos/17370583/pexels-photo-17370583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Carbon fiber texture for premium background sections",
+        "category": "backgrounds"
+      }
+    }
+  },
+  "component_guidelines": {
+    "landing_page": "Use raw HTML/Tailwind for maximum layout creativity. Avoid standard Shadcn cards. Build bento grids with overlapping assets, 1px white/10 borders, and dark glass.",
+    "admin_dashboard": "Use standard Shadcn components (Cards, Tables, Forms, Dialogs). Keep it dense, high utility, with strict grid alignments.",
+    "icons": "Use @phosphor-icons/react (Duotone or Regular) for premium tech feel.",
+    "buttons": "Pill-shaped or sharp rectangular with 1px border. Background transparent or #D4AF37 for primary. Use subtle inner shadows for depth.",
+    "toast": "Use Sonner for toast notifications."
+  },
+  "accessibility": {
+    "testing": "All interactive elements must include `data-testid` in kebab-case. Example: `data-testid=\"budget-submit-button\"`.",
+    "contrast": "Ensure text contrast over images using scrims (black/50 gradients). Do not use fully transparent header backgrounds."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Do not use dark colors as gradients. Use solid deep blacks with subtle noise/texture.",
+    "Don't make generic centered layouts. Use grid asymmetry.",
+    "Create depth through layered design elements with z-index hierarchy and glassmorphism (12-24px blur).",
+    "DO NOT apply universal transition (e.g., transition: all). Target specific properties.",
+    "DO NOT center align the app container (.App { text-align: center; }).",
+    "Use 2-3x more spacing than feels comfortable.",
+    "NEVER use AI assistant emojis for icons.",
+    "Use real images provided in the guidelines, NEVER use placeholder image services."
+  ],
+  "libraries_to_install": [
+    "framer-motion",
+    "@studio-freight/lenis",
+    "@phosphor-icons/react",
+    "sonner"
+  ]
+}
