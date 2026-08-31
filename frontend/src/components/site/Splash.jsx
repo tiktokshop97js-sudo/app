@@ -19,9 +19,9 @@ export default function Splash({ done }) {
             transition={{ duration: 1, ease }}
           >
             <img
-              src="/logo-a-clean.png"
+              src="/logo-wolf.png"
               alt="Alfa Blindagem Premium"
-              className="mix-blend-screen w-36 object-contain sm:w-44"
+              className="mix-blend-screen w-40 object-contain sm:w-48"
             />
           </motion.div>
           <div className="mt-8 overflow-hidden">

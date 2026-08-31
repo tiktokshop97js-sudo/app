@@ -1,7 +1,7 @@
 export default function Logo({ size = 40, className = "" }) {
   return (
     <img
-      src="/logo-a-clean.png"
+      src="/logo-wolf.png"
       alt="Alfa Blindagem Premium"
       width={size}
       height={size}
