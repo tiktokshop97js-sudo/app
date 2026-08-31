@@ -19,11 +19,31 @@ export default function Splash({ done }) {
             transition={{ duration: 1, ease }}
           >
             <img
-              src="/logo-full.png"
+              src="/logo-a-clean.png"
               alt="Alfa Blindagem Premium"
-              className="mix-blend-screen w-64 object-contain sm:w-80"
+              className="mix-blend-screen w-36 object-contain sm:w-44"
             />
           </motion.div>
+          <div className="mt-8 overflow-hidden">
+            <motion.h1
+              initial={{ y: "115%" }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.55, duration: 0.75, ease }}
+              className="font-display text-4xl font-medium tracking-[0.4em] text-white sm:text-5xl"
+            >
+              ALFA
+            </motion.h1>
+          </div>
+          <div className="mt-1 overflow-hidden">
+            <motion.p
+              initial={{ y: "115%" }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.75, duration: 0.75, ease }}
+              className="font-display text-[10px] font-medium tracking-[0.5em] text-[#D4AF37] sm:text-xs"
+            >
+              BLINDAGEM PREMIUM
+            </motion.p>
+          </div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
