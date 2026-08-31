@@ -30,6 +30,7 @@ export default function Hero({ settings }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const wolfY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   return (
@@ -37,6 +38,15 @@ export default function Hero({ settings }) {
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 right-[-10%] h-[560px] w-[560px] rounded-full bg-[#D4AF37]/10 blur-[140px]" />
         <div className="absolute bottom-0 left-[-15%] h-[420px] w-[420px] rounded-full bg-white/[0.04] blur-[120px]" />
+      </div>
+      <div className="pointer-events-none absolute left-1/2 top-16 -translate-x-1/2 lg:left-auto lg:right-[-4%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0">
+        <motion.img
+          src="/logo-wolf.png"
+          alt=""
+          aria-hidden
+          style={{ y: wolfY }}
+          className="mix-blend-screen w-[300px] select-none object-contain opacity-[0.12] sm:w-[420px] lg:w-[560px] lg:opacity-[0.16]"
+        />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
@@ -114,13 +124,21 @@ export default function Hero({ settings }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.35, duration: 0.8, ease }}
-            data-testid="hero-stat-50x"
-            className="mt-8 flex max-w-lg items-center gap-5 border border-[#D4AF37]/25 bg-[#D4AF37]/[0.05] px-6 py-4"
+            data-testid="hero-stats"
+            className="mt-8 grid max-w-lg grid-cols-2 gap-3"
           >
-            <span className="font-display gold-text text-4xl font-medium leading-none">50x</span>
-            <span className="text-[11px] font-semibold uppercase leading-snug tracking-[0.14em] text-zinc-400">
-              Mais resistência contra riscos e o desgaste do dia a dia
-            </span>
+            <div className="flex items-center gap-4 border border-[#D4AF37]/25 bg-[#D4AF37]/[0.05] px-5 py-4">
+              <span className="font-display gold-text text-3xl font-medium leading-none sm:text-4xl">50x</span>
+              <span className="text-[10px] font-semibold uppercase leading-snug tracking-[0.12em] text-zinc-400">
+                Mais resistência a riscos e desgaste
+              </span>
+            </div>
+            <div className="flex items-center gap-4 border border-[#D4AF37]/25 bg-[#D4AF37]/[0.05] px-5 py-4">
+              <span className="font-display gold-text text-3xl font-medium leading-none sm:text-4xl">20x</span>
+              <span className="text-[10px] font-semibold uppercase leading-snug tracking-[0.12em] text-zinc-400">
+                Mais resistência a quedas e impactos
+              </span>
+            </div>
           </motion.div>
         </div>
 

@@ -36,6 +36,7 @@ Web app premium/luxo (preto + dourado) para empresa de blindagem de eletrônicos
 - Atualização (rebrand + agendamento): marca agora "ALFA BLINDAGEM PREMIUM" com logo oficial do cliente (escudo dourado com coroa) em /public/logo-full.png (splash) e logo-shield.png (navbar, recorte); ícones PWA png 192/512. Mensagens de WhatsApp atualizadas com o novo nome. Agendamento opcional nas páginas de detalhes (data + turno manhã 08-11 / tarde 14-19) embutido na mensagem de WhatsApp. Área de atendimento: São Ludgero, Orleans e Braço do Norte (contato, footer, detalhes).
 - Atualização (logo sem borda): a pedido do cliente, o escudo foi removido do logo — /public/logo-a-clean.png contém apenas a letra A dourada com coroa (limpeza via máscara PIL, fundo some com mix-blend-screen). Usado no navbar, splash (com textos ALFA / BLINDAGEM PREMIUM), footer, admin e ícones PWA regenerados.
 - Atualização (logo lobo): a pedido do cliente, o símbolo passou a ser um lobo dourado poderoso (somente o rosto), gerado por IA (Gemini image via emergentintegrations) — /public/logo-wolf.png, aplicado no navbar, splash, footer, admin e ícones PWA.
+- Atualização (hero): lobo dourado como marca d'água gigante no hero com parallax sutil (mix-blend-screen, opacity 12-16%); stats agora em 2 cards: "50x mais resistência a riscos e desgaste" + "20x mais resistência a quedas e impactos".
 
 ## Verificado
 - API: login/me/leads/settings PUT/serviços/galeria/reviews/promos + 401 sem token e senha errada.
